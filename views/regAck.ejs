@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="text-center" data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Registration Completed</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/Elegant-Registration-Form.css">
+</head>
+
+<body class="text-center">
+  <center><br><br><br><br><br><br>
+    <div class="banner6 py-5">
+      <div class="row">
+        <div class="container">
+          <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
+            <div class="">
+              <h2 class="mb-3 font-weight-light">Registration Successful</h2>
+              <h2 class="mb-3 font-weight-light">Your Team ID is <%= TeamID %></h2>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Team Member 1" name="teamMember1" disabled value="<%= teamMember1 %>">
+                    </div>
+                  </div><br><br>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Team Member 2" name="teamMember2" disabled value="<%= teamMember2 %>">
+                    </div>
+                  </div><br><br>
+                  <div class="col-lg-12">
+                    <button class="btn btn-md btn-block btn-danger-gradiant text-white border-0" onclick="window.location.href='/registerparticipant'">
+                      <span>Register Another Team</span></button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

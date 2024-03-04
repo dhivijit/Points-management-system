@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Players</title>
+    <link rel="stylesheet" href="/PointsPage.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="team-card">
+            <h1 class="team-name">Team ID: <%= TeamID %>
+            </h1>
+            <span class="points">Score: <%= TeamScore %></span><br>
+            <span class="points">Time Left: <span id="timeleft">
+                    <%= timeInString %>
+                </span></span>
+            <ul class="player-list">
+                <li class="player">
+                    <span class="player-name">
+                        <%= TeamMember1 %>
+                    </span>
+                </li>
+                <li class="player">
+                    <span class="player-name">
+                        <%= TeamMember2 %>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var timeleft =<%=timeLeft%>;
+        timeleft = timeleft / 1000;
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            // Time calculations for days, hours, minutes and seconds
+            var minutes = Math.floor(timeleft / 60);
+            var seconds = timeleft % 60;
+            // Display the result in the element with id="timeleft"
+            document.getElementById("timeleft").innerHTML = minutes + "m " + parseInt(seconds) + "s ";
+            // If the count down is finished, write some text
+            if (timeleft <= 0) {
+                clearInterval(x);
+                document.getElementById("timeleft").innerHTML = "Time is up!";
+            }
+            timeleft--;
+        }, 1000);
+    </script>
+</body>
+
+</html>

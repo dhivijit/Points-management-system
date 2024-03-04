@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>RiddleRealm_index</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body><div class="wrapper">
+    <a href="/team" style="color:white;"><button type="button" class="btn btn-secondary">Access a team</button></a><br><br>
+    <a href="/scoreboard" style="color:white;"><button type="button" class="btn btn-secondary">Scoreboard</button></a><br><br>
+    <% if (userRole=="Registration"||userRole=="admin") { %>
+        <a href="/registerparticipant" style="color:white;"><button type="button" class="btn btn-secondary">Register Team</button></a><br><br>
+    <% } %>
+    <% if (userRole=="admin") { %>
+        <a href="/registeruser" style="color:white;"><button type="button" class="btn btn-secondary">Register User</button></a><br><br>
+        <a href="/admin/logs" style="color:white;"><button type="button" class="btn btn-secondary">View Logs</button></a><br><br>
+    <% } %>
+    <% if (userRole=="guest") { %>
+        <a href="/login" style="color:white;"><button type="button" class="btn btn-secondary">Login</button></a><br><br>
+    <% } %>
+    <% if (userRole!="guest") { %>
+        <a href="/logout" style="color:white;"><button type="button" class="btn btn-secondary">Logout</button></a> 
+    <% } %>
+</div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        console.log("<%= userRole %>")
+    </script>
+</body>
+
+</html>

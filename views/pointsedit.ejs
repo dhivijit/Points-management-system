@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/PointsTracker.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Points Tracker</h1>
+        <p>Time Left: <span id="timeleft">
+                <%= timeInString %>
+            </span></p>
+        <p>You can give points <%= timesCanParticipate %> time(s)</p>
+        <p>Team ID:<span class="points">
+                <%= TeamID %>
+            </span></p>
+        <div class="player-names">
+            <form>
+                <label for="player1">Player 1:</label>
+                <input type="text" id="player1" name="player1" disabled value="<%= TeamMember1 %>">
+                <label for="player2">Player 2:</label>
+                <input type="text" id="player2" name="player2" disabled value="<%= TeamMember2 %>">
+            </form>
+        </div>
+        <div class="points">
+            <p>Points: <span id="points">
+                    <%= TeamScore %>
+                </span></p>
+            <div class="buttons">
+                <form action="/points/<%= TeamID %>" method="post" id="myForm">
+                    <button type="button" onclick="confirmSubmit(0)">+0</button>
+                    <button type="button" onclick="confirmSubmit(10)">+10</button>
+                    <button type="button" onclick="confirmSubmit(20)">+20</button>
+                    <button type="button" onclick="confirmSubmit(30)">+30</button>
+                </form><br>
+                <button onclick="window.location.href='/'">Go Home</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function confirmSubmit(scoreChange) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to change the score by ' + scoreChange + '?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Yes", update the value of the hidden input and submit the form
+                    var hiddenInput = document.createElement("input");
+                    hiddenInput.setAttribute("type", "hidden");
+                    hiddenInput.setAttribute("name", "ScoreChange");
+                    hiddenInput.setAttribute("value", scoreChange);
+                    document.getElementById("myForm").appendChild(hiddenInput);
+
+                    document.getElementById("myForm").submit();
+                }
+            });
+        }
+
+        var timeleft =<%=timeLeft%>;
+        timeleft = timeleft / 1000;
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            // Time calculations for days, hours, minutes and seconds
+            var minutes = Math.floor(timeleft / 60);
+            var seconds = timeleft % 60;
+            // Display the result in the element with id="timeleft"
+            document.getElementById("timeleft").innerHTML = minutes + "m " + parseInt(seconds) + "s ";
+            // If the count down is finished, write some text
+            if (timeleft <= 0) {
+                clearInterval(x);
+                document.getElementById("timeleft").innerHTML = "Time is up!";
+                document.querySelector(".buttons").innerHTML = "<h3>Your time here is over.</h3><h4>Points cannot be added anymore</h4>";
+            }
+            timeleft--;
+        }, 1000);
+    </script>
+</body>
+
+</html>

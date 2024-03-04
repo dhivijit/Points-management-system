@@ -1,0 +1,111 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0e0e0e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    padding: 40px;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    margin-bottom: 40px;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.points {
+    margin-bottom: 30px;
+}
+
+.buttons button {
+    padding: 15px 30px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff6c00;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.buttons button:hover {
+    background-color: #ff7f00;
+    transform: translateY(-2px);
+}
+
+.buttons button:active {
+    background-color: #ff9000;
+    transform: translateY(0);
+}
+
+span {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.player-names form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.player-names label {
+    margin-bottom: 20px;
+}
+
+.player-names input {
+    padding: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s;
+}
+
+.player-names input:focus {
+    outline: none;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}

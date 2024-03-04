@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="text-center" data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/Elegant-Registration-Form.css">
+</head>
+
+<body class="text-center">
+  <center><br><br><br><br><br><br>
+    <div class="banner6 py-5">
+      <div class="row">
+        <div class="container">
+          <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
+            <div class="">
+              <h2 class="mb-3 font-weight-light">Riddle Realm</h2>
+              <h2 class="mb-3 font-weight-light">Register Users</h2>
+              <form class="mt-3" action="/registeruser" method="post">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Username" name="username" required>
+                    </div>
+                  </div><br><br>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Pasword" name="password" required>
+                    </div>
+                  </div><br><br>
+                  <select class="form-select form-select-sm mb-3" style="position: relative;left:30%;width: 50%;" aria-label="Large select example" name="role" required>
+                    <option value="Stall" selected>Stall</option>
+                    <option value="Registration">Registration</option>
+                  </select>
+                  <br><br>
+                  <div class="col-lg-12">
+                    <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span>
+                        Register User</span></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

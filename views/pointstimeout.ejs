@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/PointsTracker.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Points Tracker</h1>
+        <p>Team ID:<span class="points">
+                <%= TeamID %>
+            </span></p>
+        <div class="player-names">
+            <form>
+                <label for="player1">Player 1:</label>
+                <input type="text" id="player1" name="player1" disabled value="<%= TeamMember1 %>">
+                <label for="player2">Player 2:</label>
+                <input type="text" id="player2" name="player2" disabled value="<%= TeamMember2 %>">
+            </form>
+        </div>
+        <div class="points">
+            <p>Points: <span id="points">
+                    <%= TeamScore %>
+                </span></p>
+            <% if (timeoutType=="timeExceeded" ) { %>
+                <h3>Your time here is over.</h3>
+                <h4>Points cannot be added anymore</h4>
+            <% } else { %>
+                <h3>You cannot allot points anymore.</h3>
+            <% } %>
+
+        </div>
+        <div class="buttons">
+            <button onclick="window.location.href='/'">Go Home</button>
+        </div>
+    </div>
+</body>
+
+</html>

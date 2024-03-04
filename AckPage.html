@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./AckPage.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .no-spinners {
+            -moz-appearance: textfield;
+        }
+
+        .no-spinners::-webkit-outer-spin-button,
+        .no-spinners::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="/team" method="post">
+            <h1>Team Code Entry</h1>
+            <div class="input-box">
+                <input type="number" placeholder="Team Code" name="teamID" id="teamID" required class="no-spinners">
+            </div>
+            <button type="submit" class="btn">Check Status</button>
+        </form>
+    </div>
+    <script>
+        // focus to input box on webpage load
+        document.getElementById('teamID').focus();
+
+        // only positive numbers
+        document.getElementById('teamID').addEventListener('keypress', function (e) {
+            if (e.key === '-' || e.key === '+' || e.key === '.' || e.key === ',') {
+                e.preventDefault();
+            }
+        });
+
+        // limit teamID to 3 digits
+        document.getElementById('teamID').addEventListener('input', function (e) {
+            if (this.value.length > 3) {
+                this.value = this.value.slice(0, 3);
+                alert('Team ID should be 3 digits')
+            }
+        });
+    </script>
+</body>
+
+</html>

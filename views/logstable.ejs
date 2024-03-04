@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            cursor: pointer;
+        }
+
+        .asc::after {
+            content: ' ▲';
+        }
+
+        .desc::after {
+            content: ' ▼';
+        }
+    </style>
+</head>
+<body>
+
+<table id="sortableTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">Username</th>
+            <th onclick="sortTable(1)">Action</th>
+            <th onclick="sortTable(2)">Time</th>
+            <th onclick="sortTable(3)">Team ID</th>
+            <th onclick="sortTable(4)">new Score</th>
+            <th onclick="sortTable(5)">new User</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for( let i = 0; i < logs.length; i++ ) { %>
+            <tr>
+                <td> <%= logs[i].username %></td>
+                <td><%= logs[i].action %></td>
+                <td> <%= logs[i].time %> </td>
+                <td> <%= logs[i].TeamID %> </td>
+                <td> <%= logs[i].newScore %> </td>
+                <td> <%= logs[i].newuser %> </td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<script>
+    function sortTable(columnIndex) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("sortableTable");
+        switching = true;
+        dir = "asc";
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+
+            for (i = 1; i < rows.length - 1; i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("td")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount++;
+            } else {
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+
+        // Remove existing sort indicators
+        var ths = table.getElementsByTagName("th");
+        for (var i = 0; i < ths.length; i++) {
+            ths[i].classList.remove("asc", "desc");
+        }
+
+        // Add new sort indicator
+        ths[columnIndex].classList.add(dir);
+    }
+</script>
+
+</body>
+</html>
